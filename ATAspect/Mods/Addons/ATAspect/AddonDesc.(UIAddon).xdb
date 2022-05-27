@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<UIAddon>
+	<Name>AllodsToolsAspect</Name>
+	<AutoStart>true</AutoStart>
+	<ScriptFileRefs>
+		<Item href="main.lua" />
+		<Item href="LibDnD.lua" />
+	</ScriptFileRefs>
+	<MainFormId>Main</MainFormId>
+	<Forms>
+		<Item>
+			<Id>Main</Id>
+			<Form href="MainForm.(WidgetForm).xdb" />
+		</Item>
+	</Forms>
+<localizedNameFileRef href="name.txt"/>
+<localizedDescFileRef href="desc.txt"/>
+</UIAddon>
