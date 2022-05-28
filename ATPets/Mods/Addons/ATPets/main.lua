@@ -42,34 +42,6 @@ wtATPetsButton:SetVal( "button_label", userMods.ToWString("ATP") )
 wtATPetsButton:SetFade( 1.0 )
 
 
----- INITIALIZATION ----
-function initAddon()
---common.LogInfo( "common", "Initializing")
-	DnD.Init(165387, wtATPetsButton, wtATPetsButton, true)
-	common.RegisterReactionHandler( OnwtATPetsButtonReaction, "wtATPetsButtonReaction")
-	common.RegisterEventHandler( OnEventEffectFinished, "EVENT_EFFECT_FINISHED" )
-	common.RegisterEventHandler( OnEventSecondTimer, "EVENT_SECOND_TIMER" )
-	loadSettings()
-	--common.LogInfo( "common", "Successful Init")
-end
-
-function OnEventAvatarCreated()
-	if avatar.IsExist() then
-		initAddon()
-		common.UnRegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
-	end
-end
-
-function init()
-	if avatar.IsExist() then
-		initAddon()
-	else
-		common.RegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
-	end
-end
-
-init()
-
 ---- FUNCTIONS ----
 function loadSettings()
 	--common.LogInfo( "common", "Loading Settings" )
@@ -196,3 +168,32 @@ function OnwtATPetsButtonReaction( params )
 	fadeButton()
 	saveSettings()
 end
+
+
+---- INITIALIZATION ----
+function initAddon()
+--common.LogInfo( "common", "Initializing")
+	DnD.Init(165387, wtATPetsButton, wtATPetsButton, true)
+	common.RegisterReactionHandler( OnwtATPetsButtonReaction, "wtATPetsButtonReaction")
+	common.RegisterEventHandler( OnEventEffectFinished, "EVENT_EFFECT_FINISHED" )
+	common.RegisterEventHandler( OnEventSecondTimer, "EVENT_SECOND_TIMER" )
+	loadSettings()
+	--common.LogInfo( "common", "Successful Init")
+end
+
+function OnEventAvatarCreated()
+	if avatar.IsExist() then
+		initAddon()
+		common.UnRegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
+	end
+end
+
+function init()
+	if avatar.IsExist() then
+		initAddon()
+	else
+		common.RegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
+	end
+end
+
+init()

@@ -44,34 +44,6 @@ wtATAspectButton:SetVal( "button_label", userMods.ToWString("ATA") )
 wtATAspectButton:SetFade( 1.0 )
 
 
----- INITIALIZATION ----
-function initAddon()
---common.LogInfo( "common", "Initializing")
-	DnD.Init(165385, wtATAspectButton, wtATAspectButton, true)
-	common.RegisterEventHandler( OnEventObjectBuffsChanged, "EVENT_OBJECT_BUFFS_CHANGED" )
-	common.RegisterReactionHandler( OnwtATAspectButtonReaction, "wtATAspectButtonReaction")
-	common.RegisterEventHandler( OnEventEffectFinished, "EVENT_EFFECT_FINISHED" )
-	loadSettings()
-	--common.LogInfo( "common", "Successful Init")
-end
-
-function OnEventAvatarCreated()
-	if avatar.IsExist() then
-		initAddon()
-		common.UnRegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
-	end
-end
-
-function init()
-	if avatar.IsExist() then
-		initAddon()
-	else
-		common.RegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
-	end
-end
-
-init()
-
 ---- FUNCTIONS ----
 function loadSettings()
 	--common.LogInfo( "common", "Loading Settings" )
@@ -198,3 +170,32 @@ function OnwtATAspectButtonReaction( params )
 	fadeButton()
 	saveSettings()
 end
+
+
+---- INITIALIZATION ----
+function initAddon()
+--common.LogInfo( "common", "Initializing")
+	DnD.Init(165385, wtATAspectButton, wtATAspectButton, true)
+	common.RegisterEventHandler( OnEventObjectBuffsChanged, "EVENT_OBJECT_BUFFS_CHANGED" )
+	common.RegisterReactionHandler( OnwtATAspectButtonReaction, "wtATAspectButtonReaction")
+	common.RegisterEventHandler( OnEventEffectFinished, "EVENT_EFFECT_FINISHED" )
+	loadSettings()
+	--common.LogInfo( "common", "Successful Init")
+end
+
+function OnEventAvatarCreated()
+	if avatar.IsExist() then
+		initAddon()
+		common.UnRegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
+	end
+end
+
+function init()
+	if avatar.IsExist() then
+		initAddon()
+	else
+		common.RegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
+	end
+end
+
+init()

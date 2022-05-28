@@ -3,8 +3,8 @@
 	<Name>AllodsToolsAspect</Name>
 	<AutoStart>true</AutoStart>
 	<ScriptFileRefs>
-		<Item href="main.lua" />
 		<Item href="LibDnD.lua" />
+		<Item href="main.lua" />
 	</ScriptFileRefs>
 	<MainFormId>Main</MainFormId>
 	<Forms>

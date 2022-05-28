@@ -64,34 +64,6 @@ wtATLootpetButton:SetVal( "button_label", userMods.ToWString("ATL") )
 wtATLootpetButton:SetFade( 1.0 )
 
 
----- INITIALIZATION ----
-function initAddon()
---common.LogInfo( "common", "Initializing")
-	DnD.Init(165386, wtATLootpetButton, wtATLootpetButton, true)
-	common.RegisterEventHandler( OnEventLootBagAppeared, "EVENT_LOOT_BAG_APPEARED" )
-	common.RegisterReactionHandler( OnwtATLootpetButtonReaction, "wtATLootpetButtonReaction")
-	common.RegisterEventHandler( OnEventEffectFinished, "EVENT_EFFECT_FINISHED" )
-	loadSettings()
-	--common.LogInfo( "common", "Successful Init")
-end
-
-function OnEventAvatarCreated()
-	if avatar.IsExist() then
-		initAddon()
-		common.UnRegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
-	end
-end
-
-function init()
-	if avatar.IsExist() then
-		initAddon()
-	else
-		common.RegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
-	end
-end
-
-init()
-
 ---- FUNCTIONS ----
 function loadSettings()
 	--common.LogInfo( "common", "Loading Settings" )
@@ -197,3 +169,32 @@ function OnwtATLootpetButtonReaction( params )
 	fadeButton()
 	saveSettings()
 end
+
+
+---- INITIALIZATION ----
+function initAddon()
+--common.LogInfo( "common", "Initializing")
+	DnD.Init(165386, wtATLootpetButton, wtATLootpetButton, true)
+	common.RegisterEventHandler( OnEventLootBagAppeared, "EVENT_LOOT_BAG_APPEARED" )
+	common.RegisterReactionHandler( OnwtATLootpetButtonReaction, "wtATLootpetButtonReaction")
+	common.RegisterEventHandler( OnEventEffectFinished, "EVENT_EFFECT_FINISHED" )
+	loadSettings()
+	--common.LogInfo( "common", "Successful Init")
+end
+
+function OnEventAvatarCreated()
+	if avatar.IsExist() then
+		initAddon()
+		common.UnRegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
+	end
+end
+
+function init()
+	if avatar.IsExist() then
+		initAddon()
+	else
+		common.RegisterEventHandler( OnEventAvatarCreated, "EVENT_AVATAR_CREATED" )
+	end
+end
+
+init()
