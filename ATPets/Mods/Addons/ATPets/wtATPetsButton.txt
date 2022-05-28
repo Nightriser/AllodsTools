@@ -1,0 +1,1 @@
+<button fontsize="11"><rs class="CLASS"><r name="button_label"/></rs></button>

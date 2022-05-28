@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<WidgetButton>
+	<Name>wtATPetsButton</Name>
+	<Header>
+		<Prototype href="/Mods/SampleCommon/Button/ButtonRegular.Prototype.(WidgetButton).xdb" />
+	</Header>
+	<Placement>
+		<X>
+			<Align>WIDGET_ALIGN_CENTER</Align>
+			<Size>40</Size>
+		</X>
+		<Y>
+			<Align>WIDGET_ALIGN_CENTER</Align>
+			<Size>30</Size>
+		</Y>
+	</Placement>
+	<Variants>
+		<Item>
+			<TextFileRef href="wtATPetsButton.txt" />
+			<Reaction>wtATPetsButtonReaction</Reaction>
+		</Item>
+	</Variants>
+</WidgetButton>

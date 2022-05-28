@@ -9,9 +9,8 @@ Checks if any aspect is skilled and active.
 If it is not active but skilled the addon will give a warning (red text on screen).
 Can be turned on/off with a button (ATA).
 
-## TODO: AllodsToolsLootpet - ATLootpet - ATL
+## AllodsToolsLootpet - ATLootpet - ATL
 
-NOT YET CREATED
 Checks if Lootpet is available and active.
 If it is not active but available the addon will give a warning (red text on screen).
 Can be turned on/off with a button (ATL).
@@ -32,7 +31,7 @@ If this is not the case or the fairy will run out in less than 30 minutes the ad
 Can be turned on/off with a button (ATF).
 Only useful for F2P.
  
-## TODO: AllodsToolsPets - ATPets - ATP
+## AllodsToolsPets - ATPets - ATP
 
 NOT YET CREATED
 Checks if the ability for capturing pets is ready.
