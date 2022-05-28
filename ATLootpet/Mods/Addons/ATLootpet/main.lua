@@ -158,19 +158,19 @@ end
 
 ---- EVENT HANDLERS ----
 function OnEventLootBagAppeared( params )
-	common.LogInfo( "common", "Lootbag appeared" )
-	common.LogInfo( "common", "Testing Enabled" )
+	--common.LogInfo( "common", "Lootbag appeared" )
+	--common.LogInfo( "common", "Testing Enabled" )
 	if not Settings["Enabled"] then
-		common.LogInfo( "common", "--> Setting disabled" )
+		--common.LogInfo( "common", "--> Setting disabled" )
 		return
 	end
-	common.LogInfo( "common", "--> Setting enabled" )
-	common.LogInfo( "common", "Testing Lootpet Active" )
+	--common.LogInfo( "common", "--> Setting enabled" )
+	--common.LogInfo( "common", "Testing Lootpet Active" )
 	if isLootpetActive() then
-		common.LogInfo( "common", "--> Lootpet active" )
+		--common.LogInfo( "common", "--> Lootpet active" )
 		return
 	end
-	common.LogInfo( "common", "--> Lootpet inactive" )
+	--common.LogInfo( "common", "--> Lootpet inactive" )
 	playWTMessage( Message )
 end
 
