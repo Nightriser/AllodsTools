@@ -45,3 +45,11 @@ NOT YET CREATED
 Checks if the ability for capturing demons on your private allod is ready.
 If this is the case the addon will give a warning (red text on screen).
 Can be turned on/off with a button (ATC).
+
+## TODO: AllodsToolsStats - ATStats - ATS
+
+NOT YET CREATED
+Checks if you have the correct stats for certain activities.
+i.e. no bloodlust on Astral isles / bloodtrial or bloodlust in PVP-activities.
+If this is not the case the addon will give a warning (red text on screen).
+Can be turned on/off with a button (ATS).

@@ -1,0 +1,1 @@
+Warnt, wenn kein Lootpet aktiv ist
