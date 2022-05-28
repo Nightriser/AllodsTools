@@ -7,8 +7,8 @@
 
 ---- VARIABLES ----
 -- Change According to your localization:
-Global( "Item", "B" .. string.char(228) .. "ndiger") -- Capture-Item
-Global( "Message", "Du kannst wieder Begleiter fangen" ) -- Tool is ready
+Global( "ITEM", "B" .. string.char(228) .. "ndiger") -- Capture-Item
+Global( "MESSAGE", "Du kannst wieder Begleiter fangen" ) -- Tool is ready
 
 -- Shouldn't be changed, changes appearance of announce message
 Global( "MESSAGE_FADE_IN_TIME", 350 )
@@ -26,8 +26,8 @@ Global( "Settings", {
 
 -- Check every X seconds, if the item is off cooldown.
 -- Increment this to reduce accuracy but increase overall performance
-Global ( "CHECK_INTERVAL", 30 )
-Global ( "CHECK_INTERVAL_COUNTER", 0 )
+Global ( "CHECK_INTERVAL", 600 )
+Global ( "CHECK_INTERVAL_COUNTER", 580 )
 
 -- Is Item ready (off cooldown), do not change
 Global ( "ITEM_IS_READY", false )
@@ -45,7 +45,7 @@ wtATPetsButton:SetFade( 1.0 )
 ---- INITIALIZATION ----
 function initAddon()
 --common.LogInfo( "common", "Initializing")
-	DnD.Init(165385, wtATPetsButton, wtATPetsButton, true)
+	DnD.Init(165387, wtATPetsButton, wtATPetsButton, true)
 	common.RegisterReactionHandler( OnwtATPetsButtonReaction, "wtATPetsButtonReaction")
 	common.RegisterEventHandler( OnEventEffectFinished, "EVENT_EFFECT_FINISHED" )
 	common.RegisterEventHandler( OnEventSecondTimer, "EVENT_SECOND_TIMER" )
@@ -128,27 +128,27 @@ end
 
 function checkCapture(key, itemId)
 	if not itemId then
-		common.LogInfo( "common", "Slot " .. tostring(key) .. " nicht belegt" )
+		--common.LogInfo( "common", "Slot " .. tostring(key) .. " nicht belegt" )
 		return
 	end
 	
 	local itemName = itemLib.GetName( itemId )
-	common.LogInfo( "common", "Slot " .. tostring(key) .. " belegt mit " .. userMods.FromWString( itemName ) )
-	if userMods.FromWString( itemName ) ~= Item then
-		common.LogInfo( "common", "Item ist nicht Bändiger" )
+	--common.LogInfo( "common", "Slot " .. tostring(key) .. " belegt mit " .. userMods.FromWString( itemName ) )
+	if userMods.FromWString( itemName ) ~= ITEM then
+		--common.LogInfo( "common", "Item ist nicht Bändiger" )
 		return
 	end
 	
-	common.LogInfo( "common", "Item ist Bändiger" )
+	--common.LogInfo( "common", "Item ist Bändiger" )
 	local spellId = itemLib.GetSpell ( itemId )
 	local cooldown = spellLib.GetCooldown( spellId )
 	local remainingCD = cooldown.remainingMs
-	if remainingCD then
-		common.LogInfo( "common", "Item hat noch " .. remainingCD/(60 * 1000) .. " Minuten Cooldown" )
+	if remainingCD > 0 then
+		--common.LogInfo( "common", "Item hat noch " .. remainingCD/(60 * 1000) .. " Minuten Cooldown" )
 		ITEM_IS_READY = false
 		return
 	end
-	common.LogInfo( "common", "Cooldown abgelaufen" )
+	--common.LogInfo( "common", "Cooldown abgelaufen" )
 	ITEM_IS_READY = true
 end
 
@@ -157,7 +157,7 @@ end
 
 ---- EVENT HANDLERS ----
 function OnEventSecondTimer( params )
-	common.LogInfo( "common", "CHECK_INTERVAL_COUNTER = " .. tostring( CHECK_INTERVAL_COUNTER ) )
+	--common.LogInfo( "common", "CHECK_INTERVAL_COUNTER = " .. tostring( CHECK_INTERVAL_COUNTER ) )
 	if CHECK_INTERVAL_COUNTER ~= CHECK_INTERVAL then
 		CHECK_INTERVAL_COUNTER = CHECK_INTERVAL_COUNTER + 1
 		return
@@ -170,7 +170,7 @@ function OnEventSecondTimer( params )
 	if not ITEM_IS_READY then
 		return
 	end
-	playWTMessage()
+	playWTMessage( MESSAGE )
 end
 
 function OnEventEffectFinished ( params )
